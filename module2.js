@@ -192,3 +192,170 @@
 // console.log(checkRoute('/profile/users', true, 'editor'));
 // console.log(checkRoute('/profile/users', false, 'editor'));
 // console.log(checkRoute('profile/user', false, 'editor'));
+
+// ----------------------------------------- PART 2 ------------------------------------------------------------ //
+
+// TODO За допомогою циклу `for` виведи числа від 1 до 5. Кожне число має з’явитися в консолі на окремому рядку.
+
+// for (let i = 1; i <= 5; i += 1) {
+//   console.log(i);
+// }
+
+// TODO Створи функцію `countVowels(text)`. Переведи текст у нижній регістр і циклом порахуй англійські голосні `a`, `e`, `i`, `o`, `u`. Перевір `'Education'`.
+
+// function countVowels(text) {
+//   const lowerText = text.toLowerCase();
+//   let count = 0;
+//   for (let i = 0; i < lowerText.length; i++) {
+//     if ('aeiou'.includes(lowerText[i])) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(countVowels('Education'));
+
+// TODO За допомогою циклу `for` виведи числа від 5 до 1, а після завершення циклу — слово `Старт!`.
+
+// function start(seconds) {
+//   for (let i = seconds; i > 0; i--) {
+//     console.log(i);
+//   }
+//   console.log('Старт!');
+// }
+
+// start(5);
+
+// TODO Є рядок `'JS'`. Пройди по ньому циклом і для кожного символу виведи рядок формату `<індекс>: <символ>`.
+
+// function analize(text) {
+//   for (let i = 0; i < text.length; i++) {
+//     console.log(`${i}: ${text[i]}`);
+//   }
+// }
+
+// analize('JS');
+
+// TODO Створи `removeSpaces(text)`. Циклом побудуй новий рядок, додаючи лише символи, які не є пробілами. Перевір `'learn js daily'`.
+
+// function removeSpaces(text) {
+//   let newWord = '';
+
+//   for (let i = 0; i < text.length; i++) {
+//     if (text[i] !== ' ') {
+//       newWord += text[i];
+//     }
+//   }
+//   return newWord;
+// }
+
+// console.log(removeSpaces('learn js daily'));
+
+// TODO Створи `findLongestWord(text)`. Не використовуй масиви або `split()`. Проходь по рядку разом із додатковим пробілом у кінці, накопичуй поточне слово й запам’ятовуй найдовше. Перевір `'learning loops builds skill'`.
+
+// function findLongestWord(text) {
+//   let letterCount = 0;
+//   let biggesLetterCount = 0;
+//   let currentWord = '';
+//   let biggestWord = '';
+//   for (let i = 0; i < text.length; i++) {
+//     if (text[i] !== ' ') {
+//       if (i === text.length - 1) {
+//         if (biggesLetterCount < letterCount) {
+//           biggesLetterCount = letterCount;
+//           biggestWord = currentWord;
+//           currentWord = '';
+//           letterCount = 0;
+//         }
+//       }
+//       letterCount++;
+//       currentWord += text[i];
+//     } else if (biggesLetterCount < letterCount) {
+//       biggesLetterCount = letterCount;
+//       biggestWord = currentWord;
+//       currentWord = '';
+//       letterCount = 0;
+//     } else {
+//       currentWord = '';
+//       letterCount = 0;
+//     }
+//     // console.log(text[i]);
+//     // console.log(currentWord);
+//     // console.log(letterCount);
+//   }
+
+//   return biggestWord;
+// }
+
+// АБО ----------------------------------------
+
+// function findLongestWord(text) {
+//   const wordsArr = text.split(' ');
+//   let longestWord = wordsArr[0];
+
+//   for (const word of wordsArr) {                      // !!
+//     if (word.length > longestWord.length) {
+//       longestWord = word;
+//     }
+//   }
+//   return longestWord;
+// }
+
+// АБО №2 --------------------------------------
+
+// function findLongestWord(text) {
+//   return text
+//     .split(' ')
+//     .reduce((longestWord, word) =>
+//       longestWord.length < word.length ? word : longestWord
+//     ); // !!
+// }
+
+// console.log(findLongestWord('learning loops builds skill'));
+
+// TODO Створи `makeWordLengthReport(text)`. Без `split()` сформуй рядок виду `Code(4) every(5) day(3)`. Між елементами має бути один пробіл. Перевір `'Code every day'`.
+
+// function makeWordLengthReport(text) {
+//   let newText = '';
+//   let currentWord = '';
+
+//   for (let i = 0; i < text.length; i++) {
+//     if (text[i] !== ' ') {
+//       currentWord += text[i];
+//     } else {
+//       newText += `${currentWord}(${currentWord.length}) `;
+//       currentWord = '';
+//     }
+//   }
+//   newText += `${currentWord}(${currentWord.length})`;
+
+//   return newText;
+// }
+
+// console.log(makeWordLengthReport('Code every day'));
+
+// TODO Створи `removeDuplicateWords(text)` без `split()`. Читай слова посимвольно. Додавай слово до результату, лише якщо рядок із пробілами навколо результату ще не містить таке окреме слово. Перевір `'code code clean code'`.
+
+// function removeDuplicateWords(text) {
+//   let result = '';
+//   let curentWord = '';
+//   for (let i = 0; i < text.length; i += 1) {
+//     if (text[i] !== ' ') {
+//       curentWord += text[i];
+//     } else {
+//       if (!result.includes(curentWord)) {
+//         result += `${curentWord} `;
+//       }
+//       curentWord = '';
+//     }
+//   }
+
+//   if (!result.includes(curentWord)) {
+//     result += `${curentWord} `;
+//   }
+
+//   return result.trim();
+// }
+
+// console.log(removeDuplicateWords('code code clean clean'));
